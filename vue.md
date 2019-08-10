@@ -17,20 +17,21 @@ VUE 基础
    * 全局注册：Vue.component
    * 局部注册：var ComponentA = { /* ... */ }
    * !!!每个模板只能有一个根元素。!!!如果是写局部组件的时候，没有唯一根元素的话，那么其他引入的组件不会渲染。如果没有最外层的div，component-b不渲染！！！！
-   var ComponentB = {
-    template: `<div>child2</div>`,
-};
-var ComponentA = {
+   ```javascript
+    var ComponentB = {
+       template: `<div>child2</div>`,
+    };
+    var ComponentA = {
     components:{
         "component-b":ComponentB,
     },
     template:`
-    <div>
-        <div>child1xxxx</div>
-        <component-b></component-b>
-    </div>
-    `,
-};
+       <div>
+           <div>child1xxxx</div>
+           <component-b></component-b>
+       </div>`,
+    };
+    ```
 8. prop：
    * 大小写问题：由于html大小写不敏感,camelCase(驼峰命名法)的prop名需要使用其等价的kebab-case(短横线分隔命名)命名.!!!重申一次，如果你使用字符串模板，那么这个限制就不存在了!!!
 9:inheritAttrs:false和$attrs 配合使用：
@@ -44,14 +45,17 @@ var ComponentA = {
   * 如果在实际定义是添加.native修饰符则不会被包含在$listener中
 11:事件：
   * 在template html字符串中直接定义，任何命名方式可以
-  template: `
+    ```javascript
+    template: `
         <div>
         <hr>
         <div style='font-weight:bold;color:red;'>level one</div>
         <p @click='click1'>panda from china</p>
         <div>{{$attrs}}</div>
-        <city :name='name' :addr='addr'  @my-Event='doSomething' @click1.native='click1' @click2='click2' @click3='click3'></city>
-        </div>`,
+        <city :name='name' :addr='addr' @my-Event='doSomething' @click1.native='click1' @click2='click2' @click3='click3'>
+        </city>
+        </div>`
+    ```
   * !!否则的话，事件名称会转换为小写!!
 12. sync双向实时更新数据：需要在子组件触发this.$emit("update:title", "fdfasd");达到更新数据的需求
    <text-document v-bind:title.sync="doc.title"></text-document>

@@ -1,0 +1,38 @@
+.mouseevent{
+    box-sizing: border-box;
+    padding: 20px;
+    width:500px;
+    list-style: none;
+    background: gray;
+    margin-bottom: 10px;
+}
+.mouseevent.v2{
+    background: ghostwhite;
+}
+.mouseevent li{
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+    background: greenyellow;
+}
+.mouseevent.v2 li{
+    background: rosybrown;
+}
+.mouseevent .sub-drop-down{
+    position: absolute;
+    display: none;
+    top: 20px;
+    right: 20px;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    background: burlywood;
+    z-index: 1;
+}
+.mouseevent.v2 .sub-drop-down{
+    background: yellowgreen;
+}

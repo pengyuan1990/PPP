@@ -29,7 +29,7 @@ console.log(rangeI[Symbol.iterator]() === rangeI);
 ```
 * next方法的参数：next方法的参数被当做**上一个yield的表达式**的返回值第一次使用next方法时，传递参数是无效的,而是直接使用Generator构造是传入的参数
 * Generator.prototype.throw:在外层抛出错误，内部捕获。如果Generator内部没有进行try...catch处理，那么throw的异常只能在外部被捕获
-* throw方法抛出的错误要被内部捕获，前提是必须至少执行过一次next方法触发Generator，否则throw的错误只能被外部捕获。原因猜想：生成器还没开始执行，而一开始直接执行throw就相当于执行全局throw方式，所以只能被外部捕获.查看[Babel编译工作](https://babeljs.io/repl/#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=GYVwdgxgLglg9mABAKgOboBQEoDeAoRQxKAJwE9F8jrEyYBTAGwBNEAiADy7YG4CiAvoggBDKBAAWiDPRIk4JLJX41hCAM5xG9AHSM4qDG0ChioAuEtgBpZ8xX2oC8DgG4iSidB8QBed5ix9SCioiD3QdMHoOKGw7ENCdKAl5AHcjYBF0zLZ_R2ExSWlrBSVgwggNLV19QzZANE1zKzlivgEgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.5.5&externalPlugins=)。能够发现try..catch被编译成了一个case,而且是通过将next的值赋值给prev进行处理的，因此直接调用throw没被捕获到
+* throw方法抛出的错误要被内部捕获，前提是必须至少执行过一次next方法触发Generator，否则throw的错误只能被外部捕获。原因猜想：生成器还没开始执行，而一开始直接执行throw就相当于执行全局throw方式，所以只能被外部捕获.查看[Babel编译工作](https://babeljs.io/repl)。能够发现try..catch被编译成了一个case,而且是通过将next的值赋值给prev进行处理的，因此直接调用throw没被捕获到
 * **throw方法被捕获以后，会附带执行下一条yield表达式。也就是说，会附带执行一次next方法**
 * 当Generator中的错误没有被捕获，那么遍历结束。如果继续调用next，则方法done和Undefined
 ```javascript

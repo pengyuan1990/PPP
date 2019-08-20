@@ -25,8 +25,8 @@
     asyncTest("tttt");
     console.log("22");
   ```
-* async 返回一个promise对象，而async内部的return值会成为then后面回调函数的参数，async内部throw的错误会被后面的catch或者reject处理
-* await 正常后面接一个promise对象(**是直接获取promise的resolve或者reject状态,如果是reject则会跑到async的函数体里面，需要async返回的promise的catch捕获,如果是resolve则直接吧resolve的参数当做返回值放回给async,而忽略return的返回值**),如果不是promise对象则直接返回对应的值
+* async 返回一个promise对象，而**async内部的return值会成为then后面回调函数的参数，async内部throw的错误会被后面的catch或者reject处理**
+* await 正常后面接一个promise对象(**直接获取promise的resolve或者reject状态,如果是reject则会跑到async的函数体里面，需要async返回的promise的catch捕获,如果是resolve则直接吧resolve的参数当做返回值放回给async,而忽略return的返回值**),如果不是promise对象则直接返回对应的值
 * 任何一个await的promise对象变为reject，那么整个async函数都会中断执行。
   ```javascript
     /*
@@ -43,7 +43,7 @@
     }
     function ppp(){
         return new Promise((rrr,jjj)=>{
-            rrr("aaa");
+            rrr("rrr");
             return "xxx";
         });
     }

@@ -53,4 +53,4 @@
 * Object: object is a type that represents the non-primitive type(非基础类型之外的类型:number,string,boolean,symbol,null,orundefined)
     * Object的类型变量可以赋值：enum,[]
 * 类型断言:**类似**类型转换
-    * <type>value / value as type 
+    * \<type\>value \/ value as type 

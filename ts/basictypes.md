@@ -5,7 +5,20 @@
     * js和ts中所有的数字类型都是float
 * String: string
 * Array: type[]或者Array<type>
-    * ReadonlyArray<type>
+     * ReadonlyArray<type>：不能将只读数组赋给普通数组，但是通过类型断言进行转换赋值操作.**当通过断言操作把只读数组赋值给普通数组之后，通过修改被赋值的普通数组，则只读数组也被修改了，但是还是不能对原来定义的只读数组进行修改！**
+    ```typescript
+    function testArray(input:string[]):Array<string>{
+        let ra:ReadonlyArray<number> = [1,2,3];
+        let na:Array<number> = [4,5,6];
+        console.log("--0",ra,na); //[1,2,3] [4,5,6]
+        na = <Array<number>>ra;
+        console.log("--1",ra,na); //[1,2,3] [1,2,4]
+        na[0] = 10; // ok
+        console.log("--2",ra,na); // [10,2,3] [10,2,3]
+        ra[1] = 11; // error
+        return input;
+    }
+    ```
 * Tuple(元组):
     * 和数组类似，但是元组中的参数个数是固定的，而且每个参数的类型也是确定的(不一定相同)，但是在使用的时候必须类型必须一一对应。可以通过for..of进行遍历
     * 可以通过index对特定位置的数据进行赋值操作，但是需要保证类型一致，而且index必须数组最大长度范围之内

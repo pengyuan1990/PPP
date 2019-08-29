@@ -5,6 +5,7 @@
     * js和ts中所有的数字类型都是float
 * String: string
 * Array: type[]或者Array<type>
+    * ReadonlyArray<type>
 * Tuple(元组):
     * 和数组类似，但是元组中的参数个数是固定的，而且每个参数的类型也是确定的(不一定相同)，但是在使用的时候必须类型必须一一对应。可以通过for..of进行遍历
     * 可以通过index对特定位置的数据进行赋值操作，但是需要保证类型一致，而且index必须数组最大长度范围之内

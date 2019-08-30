@@ -32,6 +32,7 @@
 * Indexable Types:用来定义interface中未被定义的属性
     * 索引签名类型只能是string或者number中的一个。确定x[]访问是索引的类型其中number是string的子类，所以当类型为string的时候，传入数字索引也不会报错
     * 普通属性的类型必须是索引类型值的类型的子类。其实可以这么理解：这个interface中的所有的值都可能通过索引的方式就行获取，如果普通属性的类型和索引值类型不同就可能冲突了
+    * 假如一个interface中同时存在[index:string]:type1和[index:number]:type2,type1的类型必须是type2的子类，因为遍历number的时候先转成string再通过string进行查找
     ```typescript
     // 简单indexable使用
     interface SimpleArryIndex {
@@ -74,7 +75,6 @@
         12:"4242",
         13:"31312",
     };
-
     function testIndexable(i:IIndexableTypes):void{
         console.log(i.name,i.age,i.sex,i["12"],i[13],i[14]);
     }
@@ -84,3 +84,11 @@
     testIIT({name:"py",tall:172,0:0,12:"12",13:"13",14:14}); //py 172 12 0 13
     testIndexable({name:"ppp",sex:"middle",age:28,"12":"12",13:"13"});//ppp 28 middle 12 13 undefined
     ```
+* class types：被class的继承的接口
+    * interface不能用new进行实例化，但是可以将interface作为变量，然后再进行new操作
+* interface的继承:
+    * interface可以继承其他interface，而且可以继承多个interface
+    * 如果继承的多个interface中具有相同的属性名称而且类型不一样则会报错
+    * interface可以继承自class
+        * 假如class中具有private和protected属性也会被继承，当接口继承了一个拥有私有或受保护的成员的类时，这个接口类型只能被这个类或其子类所实现（implement）
+* 混合类型的interface:包括普通属性和函数属性

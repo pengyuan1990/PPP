@@ -1,0 +1,70 @@
+func addStaticFiles(mux *mux) {
+	getFileContentFromCdn(videoUrl)
+	mux.RegisterOnePathWithGoHttp("/bgVideo.mp4", func(writer http.ResponseWriter, request *http.Request) {
+		rangeContent:=request.Header.Get("Range")
+		contentLength := len(gMp4Data)
+		if strings.HasPrefix(rangeContent,"bytes="){
+			rangeContentAfter:=strings.TrimPrefix(rangeContent,"bytes=")
+			before:=StringBeforeFirstSubString(rangeContentAfter,"-")
+			beforeI,beforeErr:=strconv.Atoi(before)
+			after:=StringAfterFirstSubString(rangeContentAfter,"-")
+			if after=="" && beforeErr==nil && beforeI<contentLength{
+				responsePartRange(writer,gMp4Data,beforeI,contentLength-1)
+				return
+			}
+			afterI,afterErr:=strconv.Atoi(after)
+			if beforeErr==nil && afterErr==nil && beforeI<contentLength && afterI<contentLength{
+				responsePartRange(writer,gMp4Data,beforeI,afterI)
+				return
+			}
+		}else{
+			responsePartRange(writer,gMp4Data,0,len(gMp4Data))
+			return
+		}
+	})
+}
+var videoUrl = ""
+var gMp4Data []byte
+var updateLock sync.Mutex
+func getFileContentFromCdn(resourceUrl string)(out []byte){
+	updateLock.Lock()
+	defer updateLock.Unlock()
+	newsUrl := videoUrl
+	resp, err := http.Get(resourceUrl)
+	if err != nil {
+		fmt.Println("3v8hvr7xk4", err)
+		return out
+	}
+	data, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println("cxrckhyehn", err, newsUrl)
+		return out
+	}
+	fmt.Println("25ydwgzxe4 gce file load success:",resourceUrl)
+	gMp4Data = data
+	return data
+}
+
+func responsePartRange(writer http.ResponseWriter,content []byte,inStartPos int,inEndPos int){
+	writer.Header().Set("accept-ranges","bytes")
+	writer.Header().Set("Cache-Control", "public, max-age=3600")
+	thisContent:=content[inStartPos:inEndPos+1]
+	writer.Header().Set("Content-Range","bytes "+strconv.Itoa(inStartPos)+"-"+strconv.Itoa(inEndPos)+"/"+strconv.Itoa(len(content)))
+	writer.Header().Set("Content-Length",strconv.Itoa(inEndPos+1-inStartPos))
+	writer.Write(thisContent)
+}
+
+func StringAfterFirstSubString(s string,subString string) string{
+	pos:=strings.Index(s,subString)
+	if pos==-1{
+		return ""
+	}
+	return s[pos+len(subString):]
+}
+func StringBeforeFirstSubString(s string,subString string) string{
+	pos:=strings.Index(s,subString)
+	if pos==-1{
+		return ""
+	}
+	return s[:pos]
+}

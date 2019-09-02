@@ -32,15 +32,12 @@ func getFileContentFromCdn(resourceUrl string)(out []byte){
 	newsUrl := videoUrl
 	resp, err := http.Get(resourceUrl)
 	if err != nil {
-		fmt.Println("3v8hvr7xk4", err)
 		return out
 	}
 	data, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Println("cxrckhyehn", err, newsUrl)
 		return out
 	}
-	fmt.Println("25ydwgzxe4 gce file load success:",resourceUrl)
 	gMp4Data = data
 	return data
 }
@@ -57,14 +54,14 @@ func responsePartRange(writer http.ResponseWriter,content []byte,inStartPos int,
 func StringAfterFirstSubString(s string,subString string) string{
 	pos:=strings.Index(s,subString)
 	if pos==-1{
-		return ""
+	    return ""
 	}
 	return s[pos+len(subString):]
 }
 func StringBeforeFirstSubString(s string,subString string) string{
 	pos:=strings.Index(s,subString)
 	if pos==-1{
-		return ""
+	    return ""
 	}
 	return s[:pos]
 }

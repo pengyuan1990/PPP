@@ -37,7 +37,7 @@ function serializeForm(formDom){
                 }
                 return null;
             default:
-                // var type = elem.type;
+                //var type = elem.type;
                 if (elem.value){
                     return {
                         name:name,

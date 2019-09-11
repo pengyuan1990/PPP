@@ -2,6 +2,9 @@ var rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i,
     rsubmittable = /^(?:input|select|textarea|keygen)/i,
     rcheckableType = ( /^(?:checkbox|radio)$/i );
 function serializeForm(formDom){
+    if (!formDom||formDom.nodeName.toLowerCase()!="form"||formDom.elements.length<=0){
+        return;
+    }
     var eleList = formDom.elements;
     var list = [];
     for(var index=0;index<eleList.length;index++){
@@ -9,6 +12,7 @@ function serializeForm(formDom){
     }
     var filterList = list.filter( function(ele) {
         var type = ele.type;
+        // disabled will be ture,even disabled="false" in html
         return ele.name && !ele.disabled &&
             rsubmittable.test( ele.nodeName ) && !rsubmitterTypes.test( type ) &&
             ( ele.checked || !rcheckableType.test( type ));

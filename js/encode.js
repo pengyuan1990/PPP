@@ -1,3 +1,4 @@
+// https://www.ascii.cl/htmlcodes.htm
 var __HMap = {
     '&': '&amp;',
     '<': '&lt;',

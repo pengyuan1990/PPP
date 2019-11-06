@@ -9,7 +9,8 @@ func addStaticFiles(mux *mux) {
 			beforeI,beforeErr:=strconv.Atoi(before)
 			after:=StringAfterFirstSubString(rangeContentAfter,"-")
 			if after=="" && beforeErr==nil && beforeI<contentLength{
-				responsePartRange(writer,gMp4Data,beforeI,contentLength-1)
+				//responsePartRange(writer,gMp4Data,beforeI,contentLength-1) // 在chrome上发现了一个bug，sshMac分段读取每次都是x- 开头(即没有结束字节位置)，所以此时直接将所有字节返回回去
+				responsePartRange(writer,mp4,0,len(mp4))
 				return
 			}
 			afterI,afterErr:=strconv.Atoi(after)

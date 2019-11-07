@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>径向渐变</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                padding: 40px;
+            }
+            .item{
+                margin-bottom: 10px;
+            }
+            .item >div{
+                width: 200px;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                display: inline-block;
+                font-size: 12px;
+            }
+            .one-circle{
+                background: radial-gradient(circle, yellow, red);
+            }
+            .one-circle-r50{
+                background: radial-gradient(circle 50px, yellow, red);
+            }
+            .one-ellipse{
+                background: radial-gradient(ellipse , yellow, red);
+            }
+            .one-ellipse-4010{
+                background: radial-gradient(ellipse 40px 10px, yellow, red);
+            }
+            .one-p-c{
+                background: radial-gradient(circle at 50px 50px, yellow, red);
+            }
+            .one-p-e{
+                background: radial-gradient(ellipse at 50px 50px, yellow, red);
+            }
+            .cs{
+                background: radial-gradient(closest-side circle at 50px 50px, yellow, red);
+            }
+            .cc{
+                background: radial-gradient(closest-corner circle at 50px 50px, yellow, red);
+            }
+            .fs{
+                background: radial-gradient(farthest-side circle at 50px 50px, yellow, red);
+            }
+            .fc{
+                background: radial-gradient(farthest-corner circle at 50px 50px, yellow, red);
+            }
+            .c-one{
+                border: 1px solid silver;
+                background: radial-gradient(closest-side circle, green, orange, red, white);
+            }
+            .c-two{
+                border: 1px solid silver;
+                background: radial-gradient(closest-side circle, green 10%, orange 50%, red 60%, white);
+            }
+            .c-three{
+                width: 200px; height: 200px !important;
+                border: 1px solid silver;
+                background: radial-gradient(50px 100px ellipse, transparent 40px, yellow 41px, red);
+            }
+            .radial-gradient {
+                position: relative;
+                width: 262px; height: 262px;
+                border-radius: 50%;
+                background: linear-gradient(30deg, transparent 40%, rgba(42, 41, 40, .85) 40%) no-repeat 100% 0, 
+                            linear-gradient(60deg, rgba(42, 41, 40, .85) 60%, transparent 60%) no-repeat 0 100%, 
+                            repeating-radial-gradient(#2a2928, #2a2928 4px, #ada9a0 5px, #2a2928 6px);
+                background-size: 50% 100%, 100% 50%, 100% 100%;
+            }
+            .radial-gradient:after {
+                position: absolute;
+                top: 50%; left: 50%;
+                margin: -35px;
+                border: solid 1px #d9a388;
+                width: 68px; height: 68px;
+                border-radius: 50%;
+                box-shadow: 0 0 0 4px #da5b33, inset 0 0 0 27px #da5b33;
+                background: #b5ac9a;
+                content: '';
+            }
+        </style>
+    </head>
+    <body>
+        <div class="item">
+            <p>简单图形</p>
+            <div class="one-circle">圆</div>
+            <div class="one-circle-r50">圆 50</div>
+            <div class="one-ellipse">椭圆</div>
+            <div class="one-ellipse-4010">椭圆40X10</div>
+        </div>
+        <div class="item">
+            <p>指定渐变起点</p>
+            <div class="one-p-c">圆 at 50X50</div>
+            <div class="one-p-e">椭圆 at 50X50</div>
+        </div>
+        <div class="item">
+            <p>extent-keyword关键字</p>
+            <div class="cs">closest-side</div>
+            <div class="cc">closest-corner</div>
+            <div class="fs">farthest-side</div>
+            <div class="fc">farthest-corner</div>
+        </div>
+        <div class="item">
+            <p>多色渐变</p>
+            <div class="c-one">closest-side不设置断点</div>
+            <div class="c-two">closest-side 10% 50% 60%</div>
+            <div class="c-three">椭圆渐变</div>
+        </div>
+        <div class="radial-gradient">
+
+        </div>
+    </body>
+</html>

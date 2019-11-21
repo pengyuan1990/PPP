@@ -351,6 +351,25 @@ _ZZ.prototype = {
             });
         });
     },
+    onEventDelegate:function(subSelector,eventName,handler){
+        if (!_ZZ._isFunction(handler)) {
+            return console.error("Handler Type Error");
+        }
+        this._traversingEleAction(function(ele){
+            ele.addEventListener(eventName,function(e){
+                var event = e || window.event;
+                var target = event.target || event.srcElement;
+                var currentTarget = event.currentTarget;
+                while (target !== currentTarget) {
+                    if (target.matches(subSelector)) {
+                      var sTarget = target;
+                      handler.call(sTarget, Array.prototype.slice.call(arguments));
+                    }
+                    target = target.parentNode;
+                }
+            });
+        });
+    },
     trigger: function (eventName) {
         if (this._isNull()) {
             return null;

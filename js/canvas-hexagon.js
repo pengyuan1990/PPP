@@ -136,6 +136,7 @@ class Hexagon{
         }
         for (let i = 0; i < 6; i++) {
             let rad = (360/6*i+90)*Math.PI/180 + this.offset;
+            // 直接lineTo作为起点的时候不会绘制线段
             this.ctx.lineTo(this.x + this.r * Math.cos(rad), this.y + this.r * Math.sin(rad));
         }
         this.ctx.closePath();

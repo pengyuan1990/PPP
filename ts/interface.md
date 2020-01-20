@@ -28,6 +28,7 @@
         search (source:string,subString:string):boolean;
     }
     ```
+    * 如果接口中只有一个函数的话则可以直接将函数赋值给该接口，否则需要定义对象分别赋值
     * function中的参数如果没有明确类型的话，ts会在确定的值被赋值给变量的时候推导出具体类型
 * Indexable Types:用来定义interface中未被定义的属性
     * 索引签名类型只能是string或者number中的一个。确定x[]访问是索引的类型其中number是string的子类，所以当类型为string的时候，传入数字索引也不会报错

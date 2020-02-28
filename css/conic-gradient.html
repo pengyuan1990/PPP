@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div {
+                display: inline-block;
+                width: 200px;
+                height: 200px;
+            }
+        
+            .conic {
+                background: conic-gradient(red, #ff4d00, #ff9900, #ffe600, #ccff00, #80ff00, #33ff00, #00ff1a, #00ff66, #00ffb3, cyan, #00b3ff, #0066ff, #001aff, #3300ff, #8000ff, #cc00ff, #ff00e6, #ff0099, #ff004d, red);
+                border-radius: 50%;
+            }
+        
+            .chat {
+                background: conic-gradient(deeppink 0, deeppink 30%, yellowgreen 30%, yellowgreen 70%, teal 70%, teal 100%);
+                border-radius: 50%;
+            }
+        
+            .block {
+                background: conic-gradient(#000 12.5%, #fff 0 37.5%, #000 0 62.5%, #fff 0 87.5%, #000 0);
+                background-size: 50px 50px;
+                background-repeat: no-repeat;
+            }
+        
+            .four {
+                background: repeating-conic-gradient(deeppink 0 15deg, yellowgreen 0 30deg);
+                border: 1px solid #000;
+            }
+        
+            .five {
+                display: block;
+                width: 200px;
+                height: 200px;
+                position: relative;
+                margin: 0;
+                overflow: hidden;
+                background: radial-gradient(#fff6f5, black);
+            }
+        
+            .five:before,
+            .five:after {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: -100px;
+                width: 200px;
+                height: 200px;
+                opacity: .5;
+                mix-blend-mode: overlay;
+                -webkit-animation: rotate 12.4s ease-in-out infinite;
+                animation: rotate 12.4s ease-in-out infinite;
+                content: '';
+            }
+        
+            .five:before {
+                background: conic-gradient(rgba(3, 10, 0, 0.28), rgba(3, 10, 0, 0.38), rgba(3, 10, 0, 0.55), rgba(3, 10, 0, 0.03), rgba(3, 10, 0, 0.76), rgba(3, 10, 0, 0.71), rgba(3, 10, 0, 0.63), rgba(3, 10, 0, 0.44), rgba(3, 10, 0, 0.22), rgba(3, 10, 0, 0.59), rgba(3, 10, 0, 0.31), rgba(3, 10, 0, 0.99), rgba(3, 10, 0, 0.8), rgba(3, 10, 0, 0.72), rgba(3, 10, 0, 0.56), rgba(3, 10, 0, 0.07), rgba(3, 10, 0, 0.85), #030a00, rgba(3, 10, 0, 0.53), rgba(3, 10, 0, 0.9), rgba(3, 10, 0, 0.69), rgba(4, 9, 1, 0.19), rgba(3, 10, 0, 0.35), rgba(3, 10, 0, 0.94), rgba(3, 10, 0, 0.11), rgba(3, 10, 0, 0.94), rgba(3, 10, 0, 0.42), rgba(3, 10, 0, 0.33), rgba(3, 10, 0, 0.88), rgba(3, 10, 0, 0.28), rgba(3, 10, 0, 0.38), rgba(3, 10, 0, 0.55), rgba(3, 10, 0, 0.03), rgba(3, 10, 0, 0.76), rgba(3, 10, 0, 0.71), rgba(3, 10, 0, 0.63), rgba(3, 10, 0, 0.44), rgba(3, 10, 0, 0.22), rgba(3, 10, 0, 0.59), rgba(3, 10, 0, 0.31), rgba(3, 10, 0, 0.99), rgba(3, 10, 0, 0.8), rgba(3, 10, 0, 0.72), rgba(3, 10, 0, 0.56), rgba(3, 10, 0, 0.07), rgba(3, 10, 0, 0.85), #030a00, rgba(3, 10, 0, 0.53), rgba(3, 10, 0, 0.9), rgba(3, 10, 0, 0.69), rgba(4, 9, 1, 0.19), rgba(3, 10, 0, 0.35), rgba(3, 10, 0, 0.94), rgba(3, 10, 0, 0.11), rgba(3, 10, 0, 0.94), rgba(3, 10, 0, 0.42), rgba(3, 10, 0, 0.33));
+            }
+        
+            .five:after {
+                background: conic-gradient(rgba(3, 10, 0, 0.64), rgba(3, 10, 0, 0.99), rgba(3, 10, 0, 0.47), rgba(3, 10, 0, 0.92), rgba(3, 10, 0, 0.22), rgba(3, 10, 0, 0.09), rgba(3, 10, 0, 0.74), rgba(3, 10, 0, 0.52), rgba(3, 10, 0, 0.79), rgba(3, 10, 0, 0.58), rgba(3, 10, 0, 0.77), rgba(3, 10, 0, 0.72), rgba(3, 10, 0, 0.45), rgba(3, 10, 0, 0.64), rgba(3, 10, 0, 0.26), rgba(3, 10, 0, 0.45), rgba(4, 9, 1, 0.72), rgba(3, 10, 0, 0.06), rgba(3, 10, 0, 0.68), rgba(3, 10, 0, 0.53), rgba(3, 10, 0, 0.58), rgba(3, 10, 0, 0.7), rgba(3, 10, 0, 0.69), rgba(3, 10, 0, 0.4), rgba(3, 10, 0, 0.21), rgba(3, 10, 0, 0.69), rgba(3, 10, 0, 0.01), rgba(3, 10, 0, 0.84), rgba(3, 10, 0, 0.21), rgba(3, 10, 0, 0.15), rgba(3, 10, 0, 0.64), rgba(3, 10, 0, 0.99), rgba(3, 10, 0, 0.47), rgba(3, 10, 0, 0.92), rgba(3, 10, 0, 0.22), rgba(3, 10, 0, 0.09), rgba(3, 10, 0, 0.74), rgba(3, 10, 0, 0.52), rgba(3, 10, 0, 0.79), rgba(3, 10, 0, 0.58), rgba(3, 10, 0, 0.77), rgba(3, 10, 0, 0.72), rgba(3, 10, 0, 0.45), rgba(3, 10, 0, 0.64), rgba(3, 10, 0, 0.26), rgba(3, 10, 0, 0.45), rgba(4, 9, 1, 0.72), rgba(3, 10, 0, 0.06), rgba(3, 10, 0, 0.68), rgba(3, 10, 0, 0.53), rgba(3, 10, 0, 0.58), rgba(3, 10, 0, 0.7), rgba(3, 10, 0, 0.69), rgba(3, 10, 0, 0.4), rgba(3, 10, 0, 0.21), rgba(3, 10, 0, 0.69), rgba(3, 10, 0, 0.01), rgba(3, 10, 0, 0.84), rgba(3, 10, 0, 0.21));
+                -webkit-animation-duration: 9.3s;
+                animation-duration: 9.3s;
+                animation-direction: reverse;
+            }
+        
+            @-webkit-keyframes rotate {
+                to {
+                    -webkit-transform: rotate(1turn);
+                    transform: rotate(1turn);
+                }
+            }
+        
+            @keyframes rotate {
+                to {
+                    -webkit-transform: rotate(1turn);
+                    transform: rotate(1turn);
+                }
+            }
+        
+            .bg {
+                position: relative;
+                margin: 50px auto;
+                width: 400px;
+                height: 400px;
+                border-radius: 50%;
+                background: conic-gradient(#f1462c 0%, #fc5d2c 12.4%, #fff 12.5%, #fff 12.5%, #fc5d2c 12.5%, #fba73e 24.9%, #fff 24.9%, #fff 25%, #fba73e 25%, #e0fa4e 37.4%, #fff 37.4%, #fff 37.5%, #e0fa4e 37.5%, #12dd7e 49.9%, #fff 49.9%, #fff 50%, #12dd7e 50%, #0a6e3f 62.4%, #fff 62.4%, #fff 62.5%);
+                -webkit-transform: rotate(-112.5deg);
+                transform: rotate(-112.5deg);
+                -webkit-transform-origin: 50% 50%;
+                transform-origin: 50% 50%;
+            }
+        
+            .bg::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                width: 370px;
+                height: 370px;
+                border-radius: 50%;
+                background: #fff;
+            }
+        
+            .bg::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                width: 320px;
+                height: 320px;
+                border-radius: 50%;
+                background: radial-gradient(#fff 0%, #fff 25%, transparent 25%, transparent 100%), conic-gradient(#f1462c 0 12.5%, #fba73e 0 25%, #e0fa4e 0 37.5%, #12dd7e 0 50%, #0a6e3f 0 62.5%, #fff 0 100%);
+            }
+        
+            .point {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 50%;
+                background: radial-gradient(#467dc6 0%, #a4c6f3 100%);
+                border-radius: 50%;
+                z-index: 999;
+            }
+        
+            .point::before {
+                content: "";
+                position: absolute;
+                width: 5px;
+                height: 350px;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%) rotate(0);
+                transform: translate(-50%, -50%) rotate(0);
+                border-radius: 100% 100% 5% 5%;
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #9bc7f6), color-stop(50%, #467dc6), color-stop(50%, transparent), to(transparent));
+                background: linear-gradient(180deg, #9bc7f6 0, #467dc6 50%, transparent 50%, transparent 100%);
+                -webkit-animation: rotate2 3s cubic-bezier(0.93, 1.32, 0.89, 1.15) infinite;
+                animation: rotate2 3s cubic-bezier(0.93, 1.32, 0.89, 1.15) infinite;
+            }
+        
+            @-webkit-keyframes rotate2 {
+                50% {
+                    -webkit-transform: translate(-50%, -50%) rotate(150deg);
+                    transform: translate(-50%, -50%) rotate(150deg);
+                }
+        
+                100% {
+                    -webkit-transform: translate(-50%, -50%) rotate(150deg);
+                    transform: translate(-50%, -50%) rotate(150deg);
+                }
+            }
+        
+            @keyframes rotate2 {
+                50% {
+                    -webkit-transform: translate(-50%, -50%) rotate(150deg);
+                    transform: translate(-50%, -50%) rotate(150deg);
+                }
+        
+                100% {
+                    -webkit-transform: translate(-50%, -50%) rotate(150deg);
+                    transform: translate(-50%, -50%) rotate(150deg);
+                }
+            }
+        </style>
+        </head>
+    <body>
+        <div class="conic"></div>
+        <div class="chat"></div>
+        <div class="block"></div>
+        <div class="four"></div>
+        <div class="five"></div>
+        <div class="bg">
+            <div class="point"></div>
+        </div>
+    </body>
+</html>

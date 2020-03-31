@@ -12,4 +12,6 @@
     * https://www.dmarcanalyzer.com/spf/spf-record/
     * https://www.mail-tester.com/spf/cloudflare
   * a标签跳转noopener，noreferrer设置：  target="_blank" rel="noopener noreferrer"
+    * https://www.jeewangarg.com/blog/difference-among-noopener-noreferrer-and-nofollow
+    * https://zhuanlan.zhihu.com/p/73458274
  

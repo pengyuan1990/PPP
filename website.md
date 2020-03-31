@@ -15,5 +15,6 @@
     * https://www.jeewangarg.com/blog/difference-among-noopener-noreferrer-and-nofollow
     * https://zhuanlan.zhihu.com/p/73458274
   * DMARC相关
+    * https://support.google.com/a/answer/2466580?hl=zh-Hans&ref_topic=2759254&visit_id=637212348386568522-3321333589&rd=1
     * 检查网站：https://dmarcian.com/dmarc-inspector/
  

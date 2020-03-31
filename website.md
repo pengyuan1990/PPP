@@ -14,4 +14,6 @@
   * a标签跳转noopener，noreferrer设置：  target="_blank" rel="noopener noreferrer"
     * https://www.jeewangarg.com/blog/difference-among-noopener-noreferrer-and-nofollow
     * https://zhuanlan.zhihu.com/p/73458274
+  * DMARC相关
+    * 检查网站：https://dmarcian.com/dmarc-inspector/
  

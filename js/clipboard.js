@@ -34,7 +34,7 @@ window._Clipboard = (function(window, document, navigator) {
 
     function copyToClipboard() {        
         document.execCommand('copy');
-        // document.body.removeChild(textArea);
+        document.body.removeChild(textArea);
     }
 
     copy = function(text) {

@@ -28,7 +28,7 @@ window._Clipboard = (function(window, document, navigator) {
             selection.addRange(range);
             textArea.setSelectionRange(0, 999999);
         } else {
-            textArea.select();
+            textArea.select(); // iphone4/5/6 not working 
         }
     }
 

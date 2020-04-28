@@ -12,3 +12,28 @@ if (!String.prototype.includes) {
         }
     };
 }
+if (!Element.prototype.matches) {
+    Element.prototype.matches =
+        Element.prototype.matchesSelector ||
+        Element.prototype.mozMatchesSelector ||
+        Element.prototype.msMatchesSelector ||
+        Element.prototype.oMatchesSelector ||
+        Element.prototype.webkitMatchesSelector ||
+        function(s) {
+            var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+                i = matches.length;
+            while (--i >= 0 && matches.item(i) !== this) {}
+            return i > -1;
+        };
+}
+if (!Array.isArray){
+    Array.isArray = function(arg){
+      return Object.prototype.toString.call(arg) === '[object Array]';
+    };
+}
+if(!Number.isNaN){
+    Number.isNaN = function(value) {
+        var n = Number(value);
+        return n !== n;
+    };
+}

@@ -32,6 +32,7 @@ getUrlParam(key) {
         }
     }
     return query[key] || '';
+          // ie全线不支持URL
     // const urlObj = new URL(document.location);
     // if ('searchParams' in urlObj) {
     //   let params = urlObj.searchParams;

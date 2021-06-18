@@ -1,4 +1,4 @@
-## mouseenter/mouseover VS mouseleave/mouseout
+## mouseenter(mouseleave)/mouseover(mouseout)
 
 * mouseenter只会在进入绑定当前事件的dom节点是会调用移出//mouseleave: 只有鼠标指针移出事件所绑定的元素时，才会触发该事件
 * mouseover从子元素中进行进入dom时也会触发就算是进入子元素也会触发//mouseout: 只要鼠标指针移出事件所绑定的元素或其子元素，都会触发该事件(本质上就算鼠标事件的冒泡操作，从子元素冒泡到绑定事件的父元素)(总结就是只要在本身和子元素中进行了dom切换都触发,而且out事件先与over事件触发)

@@ -5,8 +5,8 @@
     * 老版本正好相反：导致问题就是在获取和设置的时候就要处理一发了
     
     * 获取：
-        window.pageYOffset：所有都支持
-        document.documentElement.scrollTop || document.body.scrollTop;
+        * window.pageYOffset：所有都支持
+        * document.documentElement.scrollTop || document.body.scrollTop;
     * 设置：就比较坑了
         最开始想的就是同时设置：毕竟只有一个有效
         window.scrollTo(x,y)进行滚动设置(现在使用)

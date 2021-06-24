@@ -37,3 +37,53 @@ if(!Number.isNaN){
         return n !== n;
     };
 }
+if (!Array.prototype.includes) {
+  Array.prototype.includes = function(searchElement /*, fromIndex*/) {
+    if (this == null) {
+      throw new TypeError('Array.prototype.includes called on null or undefined');
+    }
+
+    var O = Object(this);
+    var len = parseInt(O.length, 10) || 0;
+    if (len === 0) {
+      return false;
+    }
+    var n = parseInt(arguments[1], 10) || 0;
+    var k;
+    if (n >= 0) {
+      k = n;
+    } else {
+      k = len + n;
+      if (k < 0) {
+        k = 0;
+      }
+    }
+    var currentElement;
+    while (k < len) {
+      currentElement = O[k];
+      if (searchElement === currentElement || (searchElement !== searchElement && currentElement !== currentElement)) {
+        // NaN !== NaN
+        return true;
+      }
+      k++;
+    }
+    return false;
+  };
+}
+let grafLastTime = 0;
+if (!window.requestAnimationFrame) {
+  window.requestAnimationFrame = function(callback) {
+    const currTime = new Date().getTime();
+    const timeToCall = Math.max(0, 16.7 - (currTime - grafLastTime));
+    const id = window.setTimeout(() => {
+      callback(currTime + timeToCall);
+    }, timeToCall);
+    grafLastTime = currTime + timeToCall;
+    return id;
+  };
+}
+if (!window.cancelAnimationFrame) {
+  window.cancelAnimationFrame = function(id) {
+    clearTimeout(id);
+  };
+}
